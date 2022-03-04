@@ -588,7 +588,7 @@ void handleApdu(unsigned int *flags, unsigned int *tx) {
 
 #ifdef HAVE_ETH2
 
-                    case INS_GET_ETH2_PUBLIC_KEY:
+                case INS_GET_ETH2_PUBLIC_KEY:
                     memset(tmpCtx.transactionContext.tokenSet, 0, MAX_ITEMS);
                     handleGetEth2PublicKey(G_io_apdu_buffer[OFFSET_P1],
                                            G_io_apdu_buffer[OFFSET_P2],
