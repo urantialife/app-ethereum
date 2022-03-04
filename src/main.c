@@ -135,7 +135,7 @@ unsigned short io_exchange_al(unsigned char channel, unsigned short tx_len) {
         case CHANNEL_KEYBOARD:
             break;
 
-        // multiplexed io exchange over a SPI channel and TLV encapsulated protocol
+            // multiplexed io exchange over a SPI channel and TLV encapsulated protocol
         case CHANNEL_SPI:
             if (tx_len) {
                 io_seproxyhal_spi_send(G_io_apdu_buffer, tx_len);
@@ -144,7 +144,7 @@ unsigned short io_exchange_al(unsigned char channel, unsigned short tx_len) {
                     reset();
                 }
                 return 0;  // nothing received from the master so far (it's a tx
-                           // transaction)
+                // transaction)
             } else {
                 return io_seproxyhal_spi_recv(G_io_apdu_buffer, sizeof(G_io_apdu_buffer), 0);
             }
@@ -520,7 +520,7 @@ void handleApdu(unsigned int *flags, unsigned int *tx) {
                     break;
 
 #ifdef HAVE_NFT_SUPPORT
-                case INS_PROVIDE_NFT_INFORMATION:
+                    case INS_PROVIDE_NFT_INFORMATION:
                     handleProvideNFTInformation(G_io_apdu_buffer[OFFSET_P1],
                                                 G_io_apdu_buffer[OFFSET_P2],
                                                 G_io_apdu_buffer + OFFSET_CDATA,
@@ -588,7 +588,7 @@ void handleApdu(unsigned int *flags, unsigned int *tx) {
 
 #ifdef HAVE_ETH2
 
-                case INS_GET_ETH2_PUBLIC_KEY:
+                    case INS_GET_ETH2_PUBLIC_KEY:
                     memset(tmpCtx.transactionContext.tokenSet, 0, MAX_ITEMS);
                     handleGetEth2PublicKey(G_io_apdu_buffer[OFFSET_P1],
                                            G_io_apdu_buffer[OFFSET_P2],
@@ -610,7 +610,7 @@ void handleApdu(unsigned int *flags, unsigned int *tx) {
 #endif
 
 #if 0
-        case 0xFF: // return to dashboard
+                    case 0xFF: // return to dashboard
           goto return_to_dashboard;
 #endif
 
@@ -668,7 +668,7 @@ void app_main(void) {
             TRY {
                 rx = tx;
                 tx = 0;  // ensure no race in catch_other if io_exchange throws
-                         // an error
+                // an error
                 rx = io_exchange(CHANNEL_APDU | flags, rx);
                 flags = 0;
 
@@ -754,7 +754,7 @@ unsigned char io_event(__attribute__((unused)) unsigned char channel) {
             break;
 
 #if 0
-    case SEPROXYHAL_TAG_TICKER_EVENT:
+            case SEPROXYHAL_TAG_TICKER_EVENT:
         UX_TICKER_EVENT(G_io_seproxyhal_spi_buffer,
         {
         });
