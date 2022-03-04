@@ -520,7 +520,7 @@ void handleApdu(unsigned int *flags, unsigned int *tx) {
                     break;
 
 #ifdef HAVE_NFT_SUPPORT
-                    case INS_PROVIDE_NFT_INFORMATION:
+                case INS_PROVIDE_NFT_INFORMATION:
                     handleProvideNFTInformation(G_io_apdu_buffer[OFFSET_P1],
                                                 G_io_apdu_buffer[OFFSET_P2],
                                                 G_io_apdu_buffer + OFFSET_CDATA,
