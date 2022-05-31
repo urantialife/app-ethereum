@@ -782,6 +782,49 @@ _Output data_
 None
 
 
+### EIP712 PROVIDE FIELD INFORMATION
+
+#### Description
+
+This command provides a trusted new display name to use for the upcoming field.
+This command should come before the corresponding EIP712 SEND STRUCT IMPLEMENTATION.
+
+If the command describes an empty name (length of 0), the upcoming field will be taken into account but
+won't be shown on the device.
+
+The signature is computed on :
+
+json key length || json key || display name length || display name
+
+signed by the following secp256k1 public key 0482bbf2f34f367b2e5bc21847b6566f21f0976b22d3388a9a5e446ac62d25cf725b62a2555b2dd464a4da0ab2f4d506820543af1d242470b1b1a969a27578f353
+
+
+#### Coding
+
+_Command_
+
+[width="80%"]
+|=========================================================================
+| *CLA* | *INS*  | *P1*               | *P2*       | *LC*     | *Le*
+|   E0  |   1E   | 00                 | 00         | variable | variable
+|=========================================================================
+
+_Input data_
+
+[width="80%"]
+|==========================================
+| *Description*         | *Length (byte)*
+| Display name length   | 1
+| Display name          | variable
+| Signature length      | 1
+| Signature             | variable
+|==========================================
+
+_Output data_
+
+None
+
+
 ## Transport protocol
 
 ### General transport description
